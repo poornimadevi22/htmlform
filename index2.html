@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(65, 184, 238);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+          border-color: black;
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body> 
+    <h2>Registration Form</h2>
+
+    <form action="#" id="userForm">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" value="Poorni"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="Suresh"><br><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="A" value="25" title="Age"><br><br>
+
+        <label for="dob">DOB:</label><br>
+        <input type="date" id="dob" title="Date of Birth"><br><br>
+
+        <label for="g">Gender:</label><br>
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="female" value="female">
+        <label for="female">Female</label><br><br>
+
+        <label for="mn">Mobile Number:</label><br>
+        <input type="tel" id="mn" minlength="10"><br><br>
+
+        <label for="c">City</label><br>
+        <input type="text" id="city" value="Chennai" title="text"><br><br>
+
+        <label for="h">Hobbies:</label><br>
+        <input type="checkbox" id="hobby1" value="Dancing">
+        <label for="hobby1">Dancing</label>  
+        <input type="checkbox" id="hobby2" value="Singing">
+        <label for="hobby2">Singing</label>  
+        <input type="checkbox" id="hobby3" value="Skating">
+        <label for="hobby3">Skating</label><br><br>
+
+        <label for="courses">Courses applied for:</label><br>
+        <input type="checkbox" id="course1" value="BCA">
+        <label for="course1">BCA</label>  
+        <input type="checkbox" id="course2" value="B.Sc">
+        <label for="course2">B.Sc</label><br><br>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div id="tableContainer"></div>
+
+   <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var firstName = document.getElementById('fname').value;
+            var lastName = document.getElementById('lname').value;
+            var name = firstName + " " + lastName;
+            var mobile = document.getElementById('mn').value;
+            var city = document.getElementById('city').value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+
+            var table = document.createElement('table');
+            table.classList.add('table', 'table-striped');
+
+            var thead = document.createElement('thead');
+            var tr = document.createElement('tr');
+            var th1 = document.createElement('th');
+            th1.textContent = 'Name';
+            var th2 = document.createElement('th');
+            th2.textContent = 'Mobile';
+            var th3 = document.createElement('th');
+            th3.textContent = 'City';
+            var th4 = document.createElement('th');
+            th4.textContent = 'Gender';
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            tr.appendChild(th3);
+            tr.appendChild(th4);
+            thead.appendChild(tr);
+            table.appendChild(thead);
+
+            var tbody = document.createElement('tbody');
+            var newRow = document.createElement('tr');
+            var td1 = document.createElement('td');
+            td1.textContent = name;
+            var td2 = document.createElement('td');
+            td2.textContent = mobile;
+            var td3 = document.createElement('td');
+            td3.textContent = city;
+            var td4 = document.createElement('td');
+            td4.textContent = gender;
+            newRow.appendChild(td1);
+            newRow.appendChild(td2);
+            newRow.appendChild(td3);
+            newRow.appendChild(td4);
+            tbody.appendChild(newRow);
+            table.appendChild(tbody);
+
+            var tableContainer = document.getElementById('tableContainer');
+            tableContainer.innerHTML = '';
+            tableContainer.appendChild(table);
+        });
+    </script>
+</body>
+</html>
